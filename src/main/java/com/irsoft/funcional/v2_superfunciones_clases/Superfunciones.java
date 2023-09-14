@@ -10,7 +10,7 @@ import java.util.List;
 public class Superfunciones {
 
     public static List<Integer> filtrar(List<Integer> valores, Predicado predicado) {
-        List<Integer> resultado = new ArrayList<Integer>();
+        List<Integer> resultado = new ArrayList<>();
         for (Integer valor : valores) {
             if (predicado.test(valor)) resultado.add(valor);
         }

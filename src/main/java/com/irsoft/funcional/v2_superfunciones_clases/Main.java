@@ -36,7 +36,7 @@ public class Main {
         System.out.println("Suma de Cuadrados " + total);
     }
 
-
+/*
     private List<Integer> crearLista() {
         // Esto es una manera de hacerlo
         // return Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144);
@@ -53,7 +53,7 @@ public class Main {
         }
         return resultado;
     }
-
+*/
     private List<Integer> elevarAlCuadrado(List<Integer> pares) {
         List<Integer> resultado = new ArrayList<>();
         // Se recorre la lista y se agrega a la lista el cuadrado
