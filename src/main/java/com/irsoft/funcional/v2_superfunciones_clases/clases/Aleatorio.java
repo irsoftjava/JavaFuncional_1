@@ -9,6 +9,6 @@ public class Aleatorio implements Proveedor {
     Random random = new Random();
     @Override
     public Integer obtener() {
-        return random.nextInt(1000);
+        return random.nextInt(100);
     }
 }

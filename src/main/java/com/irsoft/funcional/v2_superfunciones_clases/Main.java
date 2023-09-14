@@ -14,7 +14,7 @@ public class Main {
         // ¿Qué queremos hacer?
 
         // 1.- Crear lista de enteros
-        List<Integer> numeros = Superfunciones.proveer(10, new Naturales());
+        List<Integer> numeros = Superfunciones.proveer(10, new Aleatorio());
         System.out.println(numeros);
 
         // 2.- Quedarme solo con los filtrados
@@ -31,15 +31,7 @@ public class Main {
         Superfunciones.consumir(transformados, new Impresor());
 
         // 5.- Obtener la suma de los transformados.
-        Integer total = Superfunciones.reducir(actuados, 0, new Sumador());
-        System.out.println("Suma de Cuadrados " + total);
-    }
-
-    private Integer sumarLista(List<Integer> mostrados) {
-        Integer total = 0;
-        for (Integer numero : mostrados) {
-            total += numero;
-        }
-        return total;
+        Integer total = Superfunciones.reducir(actuados, 1, new Multiplicador());
+        System.out.println("Reducción: " + total);
     }
 }
