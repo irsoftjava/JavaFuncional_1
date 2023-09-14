@@ -22,23 +22,19 @@ public class Main {
         System.out.println(filtrados);
 
         // 3.- Obtener el cuadrado de cada número
-        List<Integer> cuadrados = Superfunciones.transformar(filtrados, new ALCubo());
-        System.out.println(cuadrados);
+        List<Integer> transformados = Superfunciones.transformar(filtrados, new AlCubo());
+        System.out.println(transformados);
 
-        // 4.- Mostrar cada cuadrado por pantalla
-        List<Integer> mostrados = mostrarLista(cuadrados);
+        // 4a.- Mostrar cada cuadrado por pantalla y retorna lista
+        List<Integer> actuados = Superfunciones.actuar(transformados, new Impresor());
+        // 4b.- Mostrar cada cuadrado por pantalla y no retorna nada
+        Superfunciones.consumir(transformados, new Impresor());
 
-        // 5.- Obtener la suma de los cuadrados.
-        Integer total = sumarLista(mostrados);
+        // 5.- Obtener la suma de los transformados.
+        Integer total = Superfunciones.reducir(actuados, 0, new Sumador());
         System.out.println("Suma de Cuadrados " + total);
     }
 
-    private List<Integer> mostrarLista(List<Integer> numeros) {
-        for (Integer numero : numeros) {
-            System.out.println(numero);
-        }
-        return numeros;
-    }
     private Integer sumarLista(List<Integer> mostrados) {
         Integer total = 0;
         for (Integer numero : mostrados) {
