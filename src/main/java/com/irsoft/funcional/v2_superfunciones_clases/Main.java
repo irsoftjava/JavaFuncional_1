@@ -1,5 +1,6 @@
 package com.irsoft.funcional.v2_superfunciones_clases;
 
+import com.irsoft.funcional.v2_superfunciones_clases.clases.SoloImpares;
 import com.irsoft.funcional.v2_superfunciones_clases.clases.SoloPares;
 
 import java.util.ArrayList;
@@ -18,12 +19,12 @@ public class Main {
         List<Integer> numeros = crearLista();
         System.out.println(numeros);
 
-        // 2.- Quedarme solo con los pares
-        List<Integer> pares = Superfunciones.filtrar(numeros, new SoloPares());
-        System.out.println(pares);
+        // 2.- Quedarme solo con los filtrados
+        List<Integer> filtrados = Superfunciones.filtrar(numeros, new SoloImpares());
+        System.out.println(filtrados);
 
         // 3.- Pasar cada número al cuadrado
-        List<Integer> cuadrados = elevarAlCuadrado(pares);
+        List<Integer> cuadrados = elevarAlCuadrado(filtrados);
         System.out.println(cuadrados);
 
         // 4.- Mostrar cada cuadrado por pantalla
