@@ -19,7 +19,7 @@ public class Main {
             final Random random = new Random();
             @Override
             public Integer obtener() {
-                return random.nextInt(100);
+                return random.nextInt(10);
             }
         });
         System.out.println(numeros);
@@ -37,7 +37,7 @@ public class Main {
         List<Integer> transformados = Superfunciones.transformar(filtrados, new OperadorUnario<>() {
             @Override
             public Integer aplicar(Integer valor) {
-                return null;
+                return valor * valor;
             }
         });
         System.out.println(transformados);
@@ -65,7 +65,7 @@ public class Main {
         Superfunciones.consumir(transformados, impresor);
 
         // 5.- Obtener la suma de los transformados.
-        Integer total = Superfunciones.reducir(actuados, 1, new OperadorBinario<>() {
+        Integer total = Superfunciones.reducir(actuados, 0, new OperadorBinario<>() {
             @Override
             public Integer aplicar(Integer val1, Integer val2) { return val1 + val2; }
         });
