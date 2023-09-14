@@ -57,4 +57,9 @@ public class Flujo<T> {
         }
         return total;
     }
+
+    @Override
+    public String toString() {
+        return valores.toString();
+    }
 }
