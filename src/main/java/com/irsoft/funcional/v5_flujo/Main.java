@@ -1,7 +1,6 @@
 package com.irsoft.funcional.v5_flujo;
 
 import com.irsoft.funcional.v5_flujo.interfaces.*;
-
 import java.util.Random;
 
 public class Main {
@@ -17,7 +16,7 @@ public class Main {
                     final Random random = new Random();
                     @Override
                     public Integer obtener() {
-                        return random.nextInt(100);
+                        return random.nextInt(10);
                     }
                 }).filtrar(new Predicado<>() {
                     @Override
