@@ -17,7 +17,7 @@ public class Main {
                     final Random random = new Random();
                     @Override
                     public Integer obtener() {
-                        return random.nextInt(10);
+                        return random.nextInt(100);
                     }
                 }).filtrar(new Predicado<>() {
                     @Override
