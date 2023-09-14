@@ -7,47 +7,47 @@ import java.util.List;
 
 public class Superfunciones {
 
-    public static List<Integer> filtrar(List<Integer> valores, Predicado predicado) {
-        List<Integer> resultado = new ArrayList<>();
-        for (Integer valor : valores) {
+    public static <T> List<T> filtrar(List<T> valores, Predicado<T>  predicado) {
+        List<T> resultado = new ArrayList<>();
+        for (T valor : valores) {
             if (predicado.test(valor)) resultado.add(valor);
         }
         return resultado;
     }
 
-    public static List<Integer> proveer(int size, Proveedor proveedor) {
-        List<Integer> resultado = new ArrayList<>();
+    public static <T> List<T> proveer(int size, Proveedor<T> proveedor) {
+        List<T> resultado = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             resultado.add(proveedor.obtener());
         }
         return resultado;
     }
 
-    public static List<Integer> transformar(List<Integer> valores, Funcion function) {
-        List<Integer> resultado = new ArrayList<>();
-        for (Integer valor : valores) {
+    public static <T, R> List<R> transformar(List<T> valores, Funcion<T, R> function) {
+        List<R> resultado = new ArrayList<>();
+        for (T valor : valores) {
             resultado.add(function.aplicar(valor));
         }
         return resultado;
     }
 
-    public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor) {
-        for (Integer valor : valores) {
+    public static <T> List<T> actuar(List<T> valores, Consumidor<T> consumidor) {
+        for (T valor : valores) {
             consumidor.aceptar(valor);
         }
         return valores;
     }
 
-    public static void consumir(List<Integer> valores, Consumidor consumidor) {
-        for (Integer valor : valores) {
+    public static <T> void consumir(List<T> valores, Consumidor<T> consumidor) {
+        for (T valor : valores) {
             consumidor.aceptar(valor);
         }
     }
 
-    public static Integer reducir(List<Integer> valores, Integer identidad, FuncionBinaria funcionBinaria) {
-        Integer total = identidad;
-        for (Integer numero : valores) {
-            total = funcionBinaria.aplicar(total, numero);
+    public static <T> T reducir(List<T> valores, T identidad, OperadorBinario<T> funcionBinaria) {
+        T total = identidad;
+        for (T valor : valores) {
+            total = funcionBinaria.aplicar(total, valor);
         }
         return total;
     }

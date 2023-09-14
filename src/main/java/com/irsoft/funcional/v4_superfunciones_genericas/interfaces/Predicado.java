@@ -1,6 +1,6 @@
 package com.irsoft.funcional.v4_superfunciones_genericas.interfaces;
 
-public interface Predicado {
+public interface Predicado<T> {
 
-    boolean test(Integer valor);
+    boolean test(T valor);
 }

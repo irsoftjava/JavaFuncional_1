@@ -1,6 +1,6 @@
 package com.irsoft.funcional.v4_superfunciones_genericas.interfaces;
 
-public interface Funcion {
+public interface Funcion <T, R> {
 
-    Integer aplicar(Integer valor);
+    R aplicar(T valor);
 }

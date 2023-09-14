@@ -15,7 +15,7 @@ public class Main {
         // ¿Qué queremos hacer?
 
         // 1.- Crear lista de enteros
-        List<Integer> numeros = Superfunciones.proveer(10, new Proveedor() {
+        List<Integer> numeros = Superfunciones.proveer(10, new Proveedor<>() {
             final Random random = new Random();
             @Override
             public Integer obtener() {
@@ -25,7 +25,7 @@ public class Main {
         System.out.println(numeros);
 
         // 2.- Quedarme solo con los filtrados
-        List<Integer> filtrados = Superfunciones.filtrar(numeros, new Predicado() {
+        List<Integer> filtrados = Superfunciones.filtrar(numeros, new Predicado<>() {
             @Override
             public boolean test(Integer valor) {
                 return valor % 2 == 0;
@@ -33,17 +33,26 @@ public class Main {
         });
         System.out.println(filtrados);
 
-        // 3.- Obtener el cuadrado de cada número
-        List<Integer> transformados = Superfunciones.transformar(filtrados, new Funcion() {
+        // 3a.- Obtener el cuadrado de cada número
+        List<Integer> transformados = Superfunciones.transformar(filtrados, new OperadorUnario<>() {
             @Override
             public Integer aplicar(Integer valor) {
-                return valor * valor;
+                return null;
             }
         });
         System.out.println(transformados);
 
+        // 3b.- Obtener cada número convertido en cadena
+        List<String> convertidosEnCadena = Superfunciones.transformar(filtrados, new Funcion<Integer, String>() {
+            @Override
+            public String aplicar(Integer valor) {
+                return "Valor: " + valor;
+            }
+        });
+        System.out.println(convertidosEnCadena);
+
         // Puedo agregar a una variable la instancia de una Interfaz
-        Consumidor impresor = new Consumidor() {
+        Consumidor<Integer> impresor = new Consumidor<>() {
             @Override
             public void aceptar(Integer valor) {
                 System.out.println(valor);
@@ -56,11 +65,9 @@ public class Main {
         Superfunciones.consumir(transformados, impresor);
 
         // 5.- Obtener la suma de los transformados.
-        Integer total = Superfunciones.reducir(actuados, 1, new FuncionBinaria() {
+        Integer total = Superfunciones.reducir(actuados, 1, new OperadorBinario<>() {
             @Override
-            public Integer aplicar(Integer val1, Integer val2) {
-                return val1 + val2;
-            }
+            public Integer aplicar(Integer val1, Integer val2) { return val1 + val2; }
         });
         System.out.println("Reducción: " + total);
     }
