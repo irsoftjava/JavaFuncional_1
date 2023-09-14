@@ -1,11 +1,7 @@
 package com.irsoft.funcional.v2_superfunciones_clases;
 
-import com.irsoft.funcional.v2_superfunciones_clases.clases.Aleatorio;
-import com.irsoft.funcional.v2_superfunciones_clases.clases.Naturales;
-import com.irsoft.funcional.v2_superfunciones_clases.clases.SoloImpares;
-import com.irsoft.funcional.v2_superfunciones_clases.clases.SoloPares;
+import com.irsoft.funcional.v2_superfunciones_clases.clases.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -25,8 +21,8 @@ public class Main {
         List<Integer> filtrados = Superfunciones.filtrar(numeros, new SoloPares());
         System.out.println(filtrados);
 
-        // 3.- Pasar cada número al cuadrado
-        List<Integer> cuadrados = elevarAlCuadrado(filtrados);
+        // 3.- Obtener el cuadrado de cada número
+        List<Integer> cuadrados = Superfunciones.transformar(filtrados, new ALCubo());
         System.out.println(cuadrados);
 
         // 4.- Mostrar cada cuadrado por pantalla
@@ -37,33 +33,6 @@ public class Main {
         System.out.println("Suma de Cuadrados " + total);
     }
 
-/*
-    private List<Integer> crearLista() {
-        // Esto es una manera de hacerlo
-        // return Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144);
-        // Esta es otra manera de hacerlo
-        return List.of(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144);
-    }
-
-    private List<Integer> filtrarPares(List<Integer> numeros) {
-        List<Integer> resultado = new ArrayList<>();
-        // Se recorre la lista y se agrega a la lista resultado solo
-        // los números de la lista que sean pares.
-        for (Integer numero : numeros) {
-            if (numero % 2 == 0) resultado.add(numero);
-        }
-        return resultado;
-    }
-*/
-    private List<Integer> elevarAlCuadrado(List<Integer> pares) {
-        List<Integer> resultado = new ArrayList<>();
-        // Se recorre la lista y se agrega a la lista el cuadrado
-        // de los números originales.
-        for (Integer numero : pares) {
-            resultado.add(numero * numero);
-        }
-        return resultado;
-    }
     private List<Integer> mostrarLista(List<Integer> numeros) {
         for (Integer numero : numeros) {
             System.out.println(numero);
