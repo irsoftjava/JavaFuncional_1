@@ -1,7 +1,6 @@
-package com.irsoft.funcional_1;
+package com.irsoft.funcional.v1_imperativa;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
