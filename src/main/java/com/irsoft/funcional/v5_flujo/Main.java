@@ -1,6 +1,8 @@
 package com.irsoft.funcional.v5_flujo;
 
 import com.irsoft.funcional.v5_flujo.interfaces.*;
+
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -12,13 +14,15 @@ public class Main {
     public Main() {
 
         Integer total =
-                Flujo.proveer(10, new Proveedor<Integer>() {
-                    final Random random = new Random();
-                    @Override
-                    public Integer obtener() {
-                        return random.nextInt(10);
-                    }
-                }).filtrar(new Predicado<>() {
+//                Flujo.proveer(10, new Proveedor<Integer>() {
+//                    final Random random = new Random();
+//                    @Override
+//                    public Integer obtener() {
+//                        return random.nextInt(10);
+//                    }
+//                })
+                new Flujo<Integer>(List.of(1,2,3,4,5,6,7,8))
+                .filtrar(new Predicado<>() {
                     @Override
                     public boolean test(Integer valor) {
                         return valor % 2 == 0;
