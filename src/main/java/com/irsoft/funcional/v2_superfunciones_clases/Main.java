@@ -1,5 +1,6 @@
 package com.irsoft.funcional.v2_superfunciones_clases;
 
+import com.irsoft.funcional.v2_superfunciones_clases.clases.Aleatorio;
 import com.irsoft.funcional.v2_superfunciones_clases.clases.SoloImpares;
 import com.irsoft.funcional.v2_superfunciones_clases.clases.SoloPares;
 
@@ -16,7 +17,7 @@ public class Main {
         // ¿Qué queremos hacer?
 
         // 1.- Crear lista de enteros
-        List<Integer> numeros = crearLista();
+        List<Integer> numeros = Superfunciones.proveer(10, new Aleatorio());
         System.out.println(numeros);
 
         // 2.- Quedarme solo con los filtrados
