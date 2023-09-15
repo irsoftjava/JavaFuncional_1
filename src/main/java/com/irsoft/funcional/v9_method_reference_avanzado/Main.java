@@ -19,7 +19,11 @@ public class Main {
                 //.ordenar((valor1, valor2) -> valor1 - valor2)
                 .ordenar(Integer::compareTo)
                 .transformar(NumbersUtils::elevarAlCuadrado)
+                //.transformar(valor -> new Descripcion(valor))
+                .transformar(Descripcion::new)
                 .actuar(System.out::println)
+                //.transformar(description -> description.getValue())
+                .transformar(Descripcion::getValue)
                 .reducir(0, Integer::sum);
 
         System.out.println("Reducción: " + total);
