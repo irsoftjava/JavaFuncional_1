@@ -1,6 +1,7 @@
 package com.irsoft.funcional.v10_optional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
@@ -54,6 +55,15 @@ public class Flujo<T> {
         List<T> listaOrdenada = new ArrayList<>(valores);
         listaOrdenada.sort(comparador);
         return new Flujo<>(listaOrdenada);
+    }
+
+    public T max(Comparator<T> comparador) {
+        try {
+            return Collections.max(valores, comparador);
+        } catch (Exception e) {
+            // Retorna un valor que represente que no hay un máximo
+            return null;
+        }
     }
 
     public T reducir(T identidad, BinaryOperator<T> funcionBinaria) {
