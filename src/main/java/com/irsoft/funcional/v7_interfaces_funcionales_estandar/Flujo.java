@@ -1,7 +1,5 @@
 package com.irsoft.funcional.v7_interfaces_funcionales_estandar;
 
-import com.irsoft.funcional.v7_interfaces_funcionales_estandar.interfaces.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.*;
