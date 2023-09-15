@@ -2,9 +2,6 @@ package com.irsoft.funcional.v8_method_reference;
 
 import java.util.Random;
 
-import static com.irsoft.funcional.v8_method_reference.NumbersUtils.elevarAlCuadrado;
-import static com.irsoft.funcional.v8_method_reference.NumbersUtils.esPrimo;
-
 public class Main {
 
     Random random = new Random();
@@ -17,11 +14,11 @@ public class Main {
      */
     public Main() {
 
-        Integer total = Flujo.proveer(10, () -> randomInt())
-                .filtrar(valor -> esPrimo(valor))
-                .transformar(valor -> elevarAlCuadrado(valor))
-                .actuar(valor -> System.out.println(valor))
-                .reducir(0, (val1, val2) -> Integer.sum(val1, val2));
+        Integer total = Flujo.proveer(10, this::randomInt)
+                .filtrar(NumbersUtils::esPrimo)
+                .transformar(NumbersUtils::elevarAlCuadrado)
+                .actuar(System.out::println)
+                .reducir(0, Integer::sum);
 
         System.out.println("Reducción: " + total);
     }
