@@ -1,6 +1,7 @@
 package com.irsoft.funcional.v9_method_reference_avanzado;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
 
@@ -47,6 +48,12 @@ public class Flujo<T> {
         for (T valor : valores) {
             consumidor.accept(valor);
         }
+    }
+
+    public Flujo<T> ordenar(Comparator<T> comparador) {
+        List<T> listaOrdenada = new ArrayList<>(valores);
+        listaOrdenada.sort(comparador);
+        return new Flujo<>(listaOrdenada);
     }
 
     public T reducir(T identidad, BinaryOperator<T> funcionBinaria) {

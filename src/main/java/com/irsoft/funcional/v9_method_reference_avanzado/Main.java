@@ -16,6 +16,8 @@ public class Main {
 
         Integer total = Flujo.proveer(10, this::randomInt)
                 .filtrar(NumbersUtils::esPrimo)
+                //.ordenar((valor1, valor2) -> valor1 - valor2)
+                .ordenar(Integer::compareTo)
                 .transformar(NumbersUtils::elevarAlCuadrado)
                 .actuar(System.out::println)
                 .reducir(0, Integer::sum);
