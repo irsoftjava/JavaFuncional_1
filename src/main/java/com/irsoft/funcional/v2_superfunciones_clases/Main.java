@@ -28,7 +28,7 @@ public class Main {
         // 4a.- Mostrar cada cuadrado por pantalla y retorna lista
         List<Integer> actuados = Superfunciones.actuar(transformados, new Impresor());
         // 4b.- Mostrar cada cuadrado por pantalla y no retorna nada
-        Superfunciones.consumir(transformados, new Impresor());
+        //Superfunciones.consumir(transformados, new Impresor());
 
         // 5.- Obtener la suma de los transformados.
         Integer total = Superfunciones.reducir(actuados, 1, new Multiplicador());
