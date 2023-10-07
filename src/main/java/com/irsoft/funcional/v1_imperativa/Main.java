@@ -40,34 +40,34 @@ public class Main {
         return List.of(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144);
     }
 
-    private List<Integer> filtrarPares(List<Integer> numeros) {
+    private List<Integer> filtrarPares(List<Integer> xs) {
         List<Integer> resultado = new ArrayList<>();
         // Se recorre la lista y se agrega a la lista resultado solo
         // los números de la lista que sean pares.
-        for (Integer numero : numeros) {
+        for (Integer numero : xs) {
             if (numero % 2 == 0) resultado.add(numero);
         }
         return resultado;
     }
 
-    private List<Integer> elevarAlCuadrado(List<Integer> pares) {
+    private List<Integer> elevarAlCuadrado(List<Integer> xs) {
         List<Integer> resultado = new ArrayList<>();
         // Se recorre la lista y se agrega a la lista el cuadrado
         // de los números originales.
-        for (Integer numero : pares) {
+        for (Integer numero : xs) {
             resultado.add(numero * numero);
         }
         return resultado;
     }
-    private List<Integer> mostrarLista(List<Integer> numeros) {
-        for (Integer numero : numeros) {
+    private List<Integer> mostrarLista(List<Integer> xs) {
+        for (Integer numero : xs) {
             System.out.println(numero);
         }
-        return numeros;
+        return xs;
     }
-    private Integer sumarLista(List<Integer> mostrados) {
+    private Integer sumarLista(List<Integer> xs) {
         Integer total = 0;
-        for (Integer numero : mostrados) {
+        for (Integer numero : xs) {
             total += numero;
         }
         return total;
