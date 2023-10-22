@@ -44,7 +44,6 @@ public class Main {
 //        double maxDouble = maximo.doubleValue();
 //        System.out.println("Máximo: " + maxDouble);
 
-
         /**
          * Streams:
          *
@@ -142,6 +141,34 @@ public class Main {
                 .boxed()
                 .collect(Collectors.toList());
         System.out.println(valores2);
+
+        System.out.println("Baldomero".chars().boxed().collect(Collectors.toList()));
+
+
+    /**
+     * En primer lugar tenemos una serie de métodos que permiten obtener un stream de un tipo primitivo a
+     * partir de uno que no lo sea. Entre ellos tenemos mapToDouble(toDoubleFunction), que retorna un
+     * DoubleStream correspondiente de aplicar a cada elemento del stream original la función de
+     * conversión a double recibida. También tenemos métodos similares para otros tipos, como mapToInt()
+     * o mapToLong().
+     *
+     * Si queremos realizar la conversión inversa, es decir, pasar por ejemplo un IntStream a un
+     * Stream<Integer> podemos aplicar sobre el IntStream el método boxed() que retorna un stream similar
+     * al anterior pero en el que el tipo de los elementos correspondiente al tipo boxed del tipo
+     * primitivo correspondiente al stream original.
+     *
+     * El método principal de transformación es el método map(mapFunction), que retorna un nuevo stream
+     * obtenido a partir de aplicar la función de transformación mapFunction indicada a cada uno de los
+     * elementos del stream original. El tipo del stream resultante corresponderá al tipo de retorno de
+     * la función de transformación, que puede ser distinto al tipo del stream original. El stream resultante
+     * contendrá tantos elementos como el stream original.
+     *
+     */
+        List<String> dobles = IntStream.range(1, 10)
+                .boxed()
+                .map(integer -> "V(" + integer + ", " + integer * 2 + ")")
+                .collect(Collectors.toList());
+        System.out.println(dobles);
     }
 
     private Integer randomInt() {
