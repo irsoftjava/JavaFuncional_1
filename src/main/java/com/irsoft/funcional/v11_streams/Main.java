@@ -186,6 +186,8 @@ public class Main {
         Stream.of(2, 6, 4)
                 .sorted(Comparator.reverseOrder())
                 .forEachOrdered(System.out::println);
+
+        // Métodos simples de reducción de streams
     }
 
     private Stream<Integer> getRandomNumbers(Integer sizes) {
