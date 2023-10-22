@@ -1,9 +1,6 @@
 package com.irsoft.funcional.v11_streams;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.SortedMap;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -159,9 +156,36 @@ public class Main {
                 .peek(System.out::println)
                 .collect(Collectors.toList());
 
+        /**
+         * Ordenación:
+         *
+         * Algunos stream son ordenados, es decir que sus elementos poseen un determinado orden intrínseco
+         * significativo, conocido como (encounter order). Por ejempplo, un stream cuya fuente de datos
+         * corresponda a una lista creará un stream ordenado, cuyo encounter order será el orden en el que los
+         * elementos están situados en la lista. Sin embargo, otros stream no son ordenados, en el sentido de
+         * que sus elementos no tienen un orden intrínseco significativo. Por ejemplo, un stream cuya fuente
+         * de datos sea un conjunto (set) será un stream sin encounter order, ya que en un conjunto los elementos
+         * no tienen un orden preestablecido.
+         *
+         * El hecho de que un stream sea ordenado o no dependerá del tipo de fuente de datos asociada y de las
+         * operaciones intermedias anteriores que hayamos realizado mediante las que se han obtenido el stream.
+         *
+         * Algunas operaciones trabajan por defecto en base a este encounter order, imponiendo una restrinción
+         * acerca del orden en el qe los elementos deben ser procesados, como por ejemplo las operaciones
+         * intermedias limit() o skip(). Por ejemplo:
+         *
+         *          Stream.of("Baldomero", "Germán Ginés", "Ambrosio")
+         *                .limit(2)
+         *                .forEach(System.out::println);
+         *
+         * muestra los valores Baldomero y Germán Ginés.
+         */
         Stream.of(2, 4, 6).parallel()
                 .forEachOrdered(System.out::println);
 
+        Stream.of(2, 6, 4)
+                .sorted(Comparator.reverseOrder())
+                .forEachOrdered(System.out::println);
     }
 
     private Stream<Integer> getRandomNumbers(Integer sizes) {
