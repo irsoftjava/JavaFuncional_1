@@ -1,7 +1,6 @@
 package com.irsoft.funcional.v11_streams;
 
 import java.util.ArrayList;
-//import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.SortedMap;
@@ -21,28 +20,6 @@ public class Main {
      * Constructor de Main
      */
     public Main() {
-
-//        Integer maximo = Flujo.proveer(10, this::randomInt)
-//                //.filtrar(NumbersUtils::esPrimo)
-//                .filtrar(valor -> valor >= 10)
-//                //.ordenar((valor1, valor2) -> valor1 - valor2)
-//                .ordenar(Integer::compareTo)
-//                .transformar(NumbersUtils::elevarAlCuadrado)
-//                //.transformar(valor -> new Descripcion(valor))
-//                .transformar(Descripcion::new)
-//                .actuar(System.out::println)
-//                //.transformar(description -> description.getValue())
-//                .transformar(Descripcion::getValue)
-//                //.reducir(0, Integer::sum);
-//                // De menor a mayor
-//                //.max((valor1, valor2) -> valor1 - valor2)
-//                //.max(Integer::compare)
-//                // Orden inverso
-//                //.max(Comparator.reverseOrder())
-//                .max(Comparator.naturalOrder());
-
-//        double maxDouble = maximo.doubleValue();
-//        System.out.println("Máximo: " + maxDouble);
 
         /**
          * Streams:
@@ -169,9 +146,27 @@ public class Main {
                 .map(integer -> "V(" + integer + ", " + integer * 2 + ")")
                 .collect(Collectors.toList());
         System.out.println(dobles);
+
+        // Operacoines de transformación de stream
+        List<Integer> resultado = Stream.of(2, 4, 6)
+                .flatMap(valor -> getRandomNumbers(valor))
+                .collect(Collectors.toList());
+
+        System.out.println(resultado);
+
+        // Operaciones individuales y de ordenación de Stream
+        resultado = Stream.of(2, 4, 6)
+                .peek(System.out::println)
+                .collect(Collectors.toList());
+
+        Stream.of(2, 4, 6).parallel()
+                .forEachOrdered(System.out::println);
+
     }
 
-    private Integer randomInt() {
-        return random.nextInt(10);
+    private Stream<Integer> getRandomNumbers(Integer sizes) {
+        return random.ints(sizes, 1, 10).boxed();
     }
+
+
 }
