@@ -4,7 +4,9 @@ import java.util.ArrayList;
 //import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.SortedMap;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -113,6 +115,33 @@ public class Main {
                 .filter(nombre -> nombre.contains("P"))
                 // 3.- Operación terminal
                 .collect(Collectors.toList());
+
+        List<String> nombres2 = Stream.of("Manolo", "Pedro", "Baldomero")
+                .limit(1)
+                .collect(Collectors.toList());
+        System.out.println(nombres2);
+
+        List<Integer> respuesta = Stream.generate(() -> {
+            int next = random.nextInt(10);
+            System.out.printf("Se ha generado el %d%n", next);
+            return next;
+        }).limit(3).collect(Collectors.toList());
+        System.out.println(respuesta);
+
+        List<Integer> varios = Stream.iterate(1, valor -> valor < 1000, valor -> valor * 5)
+                .collect(Collectors.toList());
+        System.out.println(varios);
+
+        List<Integer> valores = random.ints(6, 1, 50)
+                .boxed()
+                .sorted()
+                .collect(Collectors.toList());
+        System.out.println(valores);
+
+        List<Integer> valores2 = IntStream.range(1, 50)
+                .boxed()
+                .collect(Collectors.toList());
+        System.out.println(valores2);
     }
 
     private Integer randomInt() {
