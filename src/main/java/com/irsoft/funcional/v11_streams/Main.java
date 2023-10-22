@@ -1,7 +1,7 @@
 package com.irsoft.funcional.v11_streams;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+//import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -41,7 +41,10 @@ public class Main {
 //        double maxDouble = maximo.doubleValue();
 //        System.out.println("Máximo: " + maxDouble);
 
+
         /**
+         * Streams:
+         *
          * Un Stream (flujo) en Java es una secuencia de elementos que se puede procesar (mapear, filtrar,
          * transformar, reducir, recolectar), de forma secuencial o paralela, mediante una cadena de
          * operaciones especificadas a través de expresiones lambdas. Introducidos en Java 8, los 'stremas'
@@ -60,12 +63,49 @@ public class Main {
          * partir de él dentro del stream. Por ejemplo, si se filtran algunos elementos de datos del stream, NO
          * se eliminan realmente de a fuente de datos origen, simplemente se omiten a partir de ese momento
          * y ya no se tienen en cuenta en la siguiente operación incluida en la secuencia de operaciones del stream.
+         *
          * Por tanto, los datos con los que trabajamos no se ven afectados por el stream.
+         *
+         * Los Stream solo gestionan datos transitorios en memoria, lo que implica que si la aplicación falla
+         * dichos datos se perderán.
+         *
+         * Un stream puede ser finito, es decir, tener un número finito de elementos, o infinitos, si genera un
+         * número infinito de elementos. Algunas operaciones permiten restringir el número de elementos
+         * procesados, como limit() o findFirst().
+         */
+
+        /**
+         * Pipeline:
+         *
+         * Una vez hayamos creado un stream a partir de una fuente de datos, podremos ejecutar sobre él
+         * cero o más operaciones intermedias y, forzosamente, una operación final. A esta cadena de operaciones
+         * se les conoce como pipeline, y es el equivalente a una expresión matemática del tipo h(g(f(x))).
+         * Por tanto, un pipeline tiene los siguientes elementos en el siguiente orden:
+         *
+         *      - Una función generadora de stream.
+         *      - Cero o más operaciones intermedias.
+         *      - Una operación terminal.
+         *
+         * Debemos tener en cuenta que cada operación intermedia del pipeline genera un nuevo stream
+         * resultante de aplicar la operación indicada al stream anterior de la cadena. Por ejemplo, si tenemos
+         * el siguiente pipeline:
+         *
+         *          IntStream.range(1, 8)
+         *                  .filter(n -> n % 2 == 0)
+         *                  .forEach(System.out::println);
+         *
+         * El método estático range() retorna un stream que es usado por el método filter() que retorna
+         * un nuevo stream que es usado por el método forEach().
          */
 
         ArrayList<String> nombres = new ArrayList<>(List.of("Manolo", "Pedro", "Baldomero"));
 
-        Stream<String> resultado = nombres.stream().filter(nombre -> nombre.contains("P"));
+        // 1.- Función generadora del Stream
+        nombres.stream()
+                // 2.- 0 o más operaciones intemedias.
+                .filter(nombre -> nombre.contains("P"))
+                // 3.- Operación terminal
+                .forEach(System.out::println);
     }
 
     private Integer randomInt() {
