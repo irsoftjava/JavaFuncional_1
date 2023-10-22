@@ -4,6 +4,7 @@ import java.util.ArrayList;
 //import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -102,10 +103,16 @@ public class Main {
 
         // 1.- Función generadora del Stream
         nombres.stream()
-                // 2.- 0 o más operaciones intemedias.
+                // 2.- 0 o más operaciones intermedias.
                 .filter(nombre -> nombre.contains("P"))
                 // 3.- Operación terminal
                 .forEach(System.out::println);
+
+        List<String> result = nombres.stream()
+                // 2.- 0 o más operaciones intermedias.
+                .filter(nombre -> nombre.contains("P"))
+                // 3.- Operación terminal
+                .collect(Collectors.toList());
     }
 
     private Integer randomInt() {
