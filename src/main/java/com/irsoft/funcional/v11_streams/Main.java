@@ -187,7 +187,34 @@ public class Main {
                 .sorted(Comparator.reverseOrder())
                 .forEachOrdered(System.out::println);
 
-        // Métodos simples de reducción de streams
+        /**
+         * Métodos simples de reducción de streams
+         *
+         * La clase Stream y las clases específicas DoubleStream, IntStream y LongStream
+         * implementan algunos métodos que son operaciones terminales de reducción especializadas.
+         *
+         * La primera de ellas es count(), que retorna un long con el número de elementos de un Stream.
+         *
+         * long cuantosSonPares = Stream.of(1, 2, 3)
+         *              .filter(n -> n % 2 == 0)
+         *              .count();
+         *
+         * retorna 1, ya que despues de filtrar el Stream para quedarnos solo con los números pares
+         * tan solo queda uno.
+         *
+         * Las clases DoubleStream, IntStream y LongStream, correspondientes a streams de elementos
+         * de tipo primitivos numéricos, disponen del método sum() para calcular la suma de los
+         * elementos del Stream.
+         */
+
+        int resultInt = IntStream.range(1, 10)
+                .sum();
+
+        int resultInt2 = Stream.of(1, 2, 3)
+                .mapToInt(v -> v.intValue())
+                .sum();
+
+        System.out.printf("%d, %d%n", resultInt, resultInt2);
     }
 
     private Stream<Integer> getRandomNumbers(Integer sizes) {
