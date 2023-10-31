@@ -214,7 +214,10 @@ public class Main {
                 .mapToInt(v -> v.intValue())
                 .sum();
 
-        System.out.printf("%d, %d%n", resultInt, resultInt2);
+        long resultInt3 = Stream.of(1, 2, 3)
+                .count();
+
+        System.out.printf("%d, %d, %d%n", resultInt, resultInt2, resultInt3);
     }
 
     private Stream<Integer> getRandomNumbers(Integer sizes) {
