@@ -218,6 +218,41 @@ public class Main {
                 .count();
 
         System.out.printf("%d, %d, %d%n", resultInt, resultInt2, resultInt3);
+
+        /**
+         * Estas clases de Streams de elementos de tipo pimitivo numérico también disponen de
+         * métodos para obtener el valor máximo, max(), el valor mínimo, min() y la media
+         * aritmética, average(), de los elementos numéricos del Stream. Dado que el Stream
+         * sobre el que se apliquen puede estar vacío, estos métodos retornan un Optional, es
+         * decir, un valor opcional del tipo correspondiente.
+         *
+         * OptionalDouble maxImpares = IntStream.of(1, 2, 3)
+         *      .filter(n -> n % 2 != 0)
+         *      .max();
+         *
+         * OptionalDouble maxImpares = IntStream.of(1, 2, 3)
+         *      .filter(n -> n % 2 != 0)
+         *      .min();
+         *
+         * OptionalDouble maxImpares = IntStream.of(1, 2, 3)
+         *      .filter(n -> n % 2 != 0)
+         *      .average();
+         */
+
+
+        OptionalInt respInt = Stream.of(1, 2, 3)
+                        .mapToInt(Integer::intValue)
+                        .max();
+
+        OptionalInt respInt2 = Stream.of(1, 2, 3)
+                .mapToInt(Integer::intValue)
+                .min();
+
+        OptionalDouble respInt3 = Stream.of(1, 2, 3)
+                .mapToInt(Integer::intValue)
+                .average();
+
+
     }
 
     private Stream<Integer> getRandomNumbers(Integer sizes) {
