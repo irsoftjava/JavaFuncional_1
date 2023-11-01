@@ -241,8 +241,8 @@ public class Main {
 
 
         OptionalInt respInt = Stream.of(1, 2, 3)
-                        .mapToInt(Integer::intValue)
-                        .max();
+                .mapToInt(Integer::intValue)
+                .max();
 
         OptionalInt respInt2 = Stream.of(1, 2, 3)
                 .mapToInt(Integer::intValue)
